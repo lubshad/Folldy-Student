@@ -58,7 +58,7 @@ class HomeAppbar extends StatelessWidget {
                                   "Find",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText1Bold
+                                      .headline6!
                                       .copyWith(color: Colors.blueGrey),
                                 ))
                           ],
@@ -90,7 +90,7 @@ class HomeAppbar extends StatelessWidget {
                                   "Learn",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText1Bold
+                                      .headline6!
                                       .copyWith(color: Colors.blueGrey),
                                 )),
                             const Spacer(),

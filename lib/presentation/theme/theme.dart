@@ -11,6 +11,7 @@ const double defaultPaddingSmall = 10.0;
 const double defaultPaddingLarge = 40.0;
 const double defaultPaddingTiny = 5.0;
 const defaultSpacerLarge = SizedBox(height: defaultPaddingLarge);
+const defaultSpacer = SizedBox(height: defaultPadding);
 const defaultSpacerHorizontal = SizedBox(width: defaultPadding);
 const defaultSpacerSmall = SizedBox(height: defaultPadding * .5);
 const defaultSpacerTiny = SizedBox(height: defaultPadding * .25);
@@ -18,6 +19,8 @@ const defaultSpacerHorizontalSmall = SizedBox(width: defaultPadding * .5);
 const defaultSpacerHorizontalTiny = SizedBox(width: defaultPadding * .25);
 
 const Color offWhite = Color(0xFFF2F2F2);
+const Color porcelain = Color(0xFFF6F8F9);
+const Color porcelainDark = Color(0xFFEAEDEE);
 
 final List<Color> randomColors = [
   const Color(0xFF855fa8),
@@ -48,6 +51,7 @@ class AppTheme {
   }
 
   static ThemeData get theme => ThemeData.light().copyWith(
+      scaffoldBackgroundColor: Colors.white,
       textTheme: GoogleFonts.rubikTextTheme(),
       sliderTheme: SliderThemeData(
         overlayShape: SliderComponentShape.noOverlay,
@@ -64,6 +68,7 @@ class AppTheme {
         primary: Colors.blueGrey,
       ),
       appBarTheme: const AppBarTheme(
+        iconTheme: IconThemeData(color: Colors.black),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
@@ -73,7 +78,6 @@ class AppTheme {
         backgroundColor: Colors.transparent,
       ));
 }
-
 
 extension TextThemeExtension on TextTheme {
   TextStyle get headline4Bold =>

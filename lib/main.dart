@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:folldy_student/presentation/app_route.dart';
 import 'package:folldy_student/presentation/theme/theme.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Folldy Student',
       theme: AppTheme.theme,
+      routes: AppRoute.routes,
       home: const Home(),
     );
   }
