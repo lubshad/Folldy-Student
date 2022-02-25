@@ -19,6 +19,7 @@ class LearningPath extends StatelessWidget {
         const TitleText(
           text: "Set what to study now",
         ),
+        defaultSpacerSmall,
         SingleChildScrollView(
           padding: const EdgeInsets.symmetric(
               horizontal: defaultPadding - defaultPaddingTiny),
