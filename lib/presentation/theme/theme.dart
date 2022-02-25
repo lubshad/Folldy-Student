@@ -21,6 +21,7 @@ const defaultSpacerHorizontalTiny = SizedBox(width: defaultPadding * .25);
 const Color offWhite = Color(0xFFF2F2F2);
 const Color porcelain = Color(0xFFF6F8F9);
 const Color porcelainDark = Color(0xFFEAEDEE);
+const Color waikawaGray = Color(0xFF657BAD);
 
 final List<Color> randomColors = [
   const Color(0xFF855fa8),
@@ -51,6 +52,16 @@ class AppTheme {
   }
 
   static ThemeData get theme => ThemeData.light().copyWith(
+      tabBarTheme: const TabBarTheme(
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(
+            width: 2,
+            color: waikawaGray,
+          ),
+        ),
+        labelColor: Colors.black,
+        indicatorSize: TabBarIndicatorSize.label,
+      ),
       scaffoldBackgroundColor: Colors.white,
       textTheme: GoogleFonts.rubikTextTheme(),
       sliderTheme: SliderThemeData(
@@ -68,6 +79,10 @@ class AppTheme {
         primary: Colors.blueGrey,
       ),
       appBarTheme: const AppBarTheme(
+        titleTextStyle: TextStyle(
+          fontSize: 20,
+          color: Colors.black,
+        ),
         iconTheme: IconThemeData(color: Colors.black),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,

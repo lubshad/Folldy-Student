@@ -6,7 +6,7 @@ class TitleText extends StatelessWidget {
   const TitleText({
     Key? key,
     required this.text,
-     this.padding = true,
+    this.padding = true,
   }) : super(key: key);
 
   final String text;
@@ -15,13 +15,15 @@ class TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding:  EdgeInsets.only(
-            top: !padding ? 0 :defaultPaddingLarge,
+        padding: EdgeInsets.only(
+            top: !padding ? 0 : defaultPaddingLarge,
             left: defaultPadding,
             bottom: !padding ? 0 : defaultPaddingSmall),
         child: Text(
           text,
           style: Theme.of(context).textTheme.headline6,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ));
   }
 }

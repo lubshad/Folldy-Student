@@ -38,8 +38,6 @@ class TodaysTopicItem extends StatelessWidget {
                             children: [
                               SvgPicture.asset(
                                 "assets/svgs/subject_icon.svg",
-                                height: defaultPadding * .8,
-                                width: defaultPadding * .8,
                               ),
                               defaultSpacerHorizontalTiny,
                               Expanded(

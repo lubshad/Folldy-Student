@@ -7,11 +7,13 @@ class SlideControlls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Slider(
-          value: .5, onChanged: (onChanged) {}),
-      ],
+    return SizedBox(
+      height: kToolbarHeight * 2,
+      child: Column(
+        children: [
+          Slider(value: .5, onChanged: (onChanged) {}),
+        ],
+      ),
     );
   }
 }

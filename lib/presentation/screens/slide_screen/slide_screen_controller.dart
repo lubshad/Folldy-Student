@@ -32,6 +32,4 @@ class SlideScreenController extends ChangeNotifier {
     }
     return willpop;
   }
-
-
 }

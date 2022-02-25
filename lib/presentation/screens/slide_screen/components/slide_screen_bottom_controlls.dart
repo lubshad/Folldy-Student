@@ -17,16 +17,31 @@ class SlideScreenBottomControlls extends StatelessWidget {
     return AnimatedBuilder(
       animation: slideScreenController,
       builder: (BuildContext context, Widget? child) {
-        return AnimatedContainer(
-            // color: slideScreenController.fullScreen
-            //     ? Colors.transparent
-            //     : offWhite,
-
+        return SizedBox(
             height: kToolbarHeight * 2,
-            duration: defaultAnimationDuration,
-            child: slideScreenController.fullScreen
-                ? const SlideControlls()
-                : const MinimizedControlls());
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                AnimatedPositioned(
+                    left: 0,
+                    right: 0,
+                    bottom: slideScreenController.fullScreen &&
+                            slideScreenController.playerOpen
+                        ? 0
+                        : -kToolbarHeight * 2,
+                    duration: defaultAnimationDuration,
+                    child: const SlideControlls()),
+                AnimatedPositioned(
+                    duration: defaultAnimationDuration,
+                    left: 0,
+                    right: 0,
+                    bottom: !slideScreenController.fullScreen &&
+                            slideScreenController.playerOpen
+                        ? 0
+                        : -kToolbarHeight * 2,
+                    child: const MinimizedControlls()),
+              ],
+            ));
       },
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:folldy_student/presentation/components/title_text.dart';
 import 'package:folldy_student/presentation/theme/theme.dart';
 import 'package:get/get.dart';
 
