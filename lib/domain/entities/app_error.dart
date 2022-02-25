@@ -7,6 +7,12 @@ class AppError extends Equatable {
 
   @override
   List<Object> get props => [appErrorType];
+
+  handleError() {
+  }
+
+
+  
 }
 
 enum AppErrorType { api, network, database, unauthorised, sessionDenied }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:folldy_student/data/models/lean_screen_response.dart';
 import 'package:folldy_student/presentation/screens/slide_screen/slide_screen_controller.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
@@ -9,7 +10,10 @@ import '../../../theme/theme.dart';
 class TodaysTopicItem extends StatelessWidget {
   const TodaysTopicItem({
     Key? key,
+    required this.topic,
   }) : super(key: key);
+
+  final Topic topic;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class TodaysTopicItem extends StatelessWidget {
                               defaultSpacerHorizontalTiny,
                               Expanded(
                                 child: Text(
-                                  "Banking and Insurance",
+                                  topic.subject,
                                   style: Theme.of(context).textTheme.caption,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -53,7 +57,7 @@ class TodaysTopicItem extends StatelessWidget {
                           ),
                           defaultSpacerTiny,
                           Text(
-                            "Introduction to Companies Act, 1887",
+                            topic.name,
                             style: Theme.of(context).textTheme.headline6,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -81,7 +85,7 @@ class TodaysTopicItem extends StatelessWidget {
                                     radius: defaultPadding * 1.2,
                                   ),
                                   defaultSpacerTiny,
-                                  const Text("Fahis K"),
+                                  Text(topic.teacher),
                                   const Spacer(),
                                   Container(
                                       padding: const EdgeInsets.symmetric(
@@ -93,13 +97,13 @@ class TodaysTopicItem extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(
                                               defaultPaddingTiny)),
                                       child: Text(
-                                        "Module 1",
+                                        "Module ${topic.module}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .caption!
                                             .copyWith(color: Colors.white),
                                       )),
-                                  const Text("Introduction To Banking"),
+                                  Text(topic.chapter),
                                   const Spacer(),
                                   Row(
                                     children: [

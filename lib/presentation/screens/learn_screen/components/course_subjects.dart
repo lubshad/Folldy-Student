@@ -5,10 +5,15 @@ import 'package:folldy_student/presentation/components/title_text.dart';
 import 'package:folldy_student/presentation/theme/theme.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/models/lean_screen_response.dart';
+
 class CourseSubjects extends StatelessWidget {
   const CourseSubjects({
     Key? key,
+    required this.subjects,
   }) : super(key: key);
+
+  final List<Subject> subjects;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +23,17 @@ class CourseSubjects extends StatelessWidget {
       children: [
         defaultSpacerLarge,
         const TitleText(text: "Course", padding: false),
-        const Padding(
-            padding: EdgeInsets.only(left: defaultPadding),
-            child: Text("B.Com Second Semester")),
+        Padding(
+            padding: const EdgeInsets.only(left: defaultPadding),
+            child: Text("B.Com Semester ${subjects[0].semester}")),
         defaultSpacerSmall,
         SingleChildScrollView(
           padding: const EdgeInsets.symmetric(
               horizontal: defaultPadding - defaultPaddingTiny),
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: List.generate(
-                5,
-                (index) => Container(
+            children: subjects
+                .map((e) => Container(
                       margin: const EdgeInsets.symmetric(
                           horizontal: defaultPaddingTiny,
                           vertical: defaultPaddingSmall),
@@ -45,7 +49,8 @@ class CourseSubjects extends StatelessWidget {
                         child: InkWell(
                           borderRadius:
                               BorderRadius.circular(defaultPaddingSmall),
-                          onTap: () => Get.toNamed(AppRoute.subjectDetailsScreen),
+                          onTap: () =>
+                              Get.toNamed(AppRoute.subjectDetailsScreen),
                           child: Container(
                             padding: const EdgeInsets.all(defaultPadding),
                             child: Column(
@@ -56,7 +61,12 @@ class CourseSubjects extends StatelessWidget {
                                       "assets/svgs/subject_icon.svg",
                                     ),
                                     defaultSpacerHorizontalTiny,
-                                    const Text("Banking and Insurance"),
+                                    Expanded(
+                                        child: Text(
+                                      e.name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    )),
                                   ],
                                 ),
                                 defaultSpacerSmall,
@@ -90,7 +100,8 @@ class CourseSubjects extends StatelessWidget {
                           ),
                         ),
                       ),
-                    )),
+                    ))
+                .toList(),
           ),
         ),
       ],

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get_connect/http/src/exceptions/exceptions.dart';
 import 'package:http/http.dart';
 
+import '../../utils/utils.dart';
 import 'api_constants.dart';
 
 class ApiClient {
@@ -28,6 +29,8 @@ class ApiClient {
 
   dynamic post(String path, {Map<dynamic, dynamic>? params}) async {
     try {
+      consolelog(getPath(path, params));
+      consolelog(params);
       final response = await _client.post(
         getPath(path, null),
         body: jsonEncode(params),
@@ -35,6 +38,7 @@ class ApiClient {
           'Content-Type': 'application/json',
         },
       );
+      consolelog(json.decode(response.body));
       try {
         return json.decode(response.body);
       } catch (e) {

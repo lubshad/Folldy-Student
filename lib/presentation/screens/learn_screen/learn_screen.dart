@@ -23,18 +23,19 @@ class LearnScreen extends StatelessWidget {
         return NetworkResource(
           loadingWidget: const LearnScreenShimmer(),
           loading: learnScreenController.isLoading,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ...List.generate(
-                  3,
-                  (index) => const TodaysTopicItem(),
+          child: Builder(
+            builder: (context) {
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ...learnScreenController.learnScreenResponse!.data!.topics.map((e) => TodaysTopicItem(topic: e)),
+                    const LearningPath(),
+                     CourseSubjects(subjects: learnScreenController.learnScreenResponse!.data!.subjects),
+                  ],
                 ),
-                const LearningPath(),
-                const CourseSubjects(),
-              ],
-            ),
+              );
+            }
           ),
         );
       },
