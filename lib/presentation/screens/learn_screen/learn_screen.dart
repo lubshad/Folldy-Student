@@ -29,9 +29,9 @@ class LearnScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ...learnScreenController.learnScreenResponse!.data!.topics.map((e) => TodaysTopicItem(topic: e)),
+                    ...learnScreenController.learnScreenResponse!.data.topics.map((e) => TodaysTopicItem(topic: e)),
                     const LearningPath(),
-                     CourseSubjects(subjects: learnScreenController.learnScreenResponse!.data!.subjects),
+                     CourseSubjects(subjects: learnScreenController.learnScreenResponse!.data.subjects),
                   ],
                 ),
               );

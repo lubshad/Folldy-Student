@@ -13,7 +13,7 @@ class TodaysTopicItem extends StatelessWidget {
     required this.topic,
   }) : super(key: key);
 
-  final Topic topic;
+  final TopicElement topic;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class TodaysTopicItem extends StatelessWidget {
                               defaultSpacerHorizontalTiny,
                               Expanded(
                                 child: Text(
-                                  topic.subject,
+                                  topic.subject.name,
                                   style: Theme.of(context).textTheme.caption,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -85,7 +85,7 @@ class TodaysTopicItem extends StatelessWidget {
                                     radius: defaultPadding * 1.2,
                                   ),
                                   defaultSpacerTiny,
-                                  Text(topic.teacher),
+                                  Text(topic.presentations[0].teacher.name),
                                   const Spacer(),
                                   Container(
                                       padding: const EdgeInsets.symmetric(
@@ -97,13 +97,13 @@ class TodaysTopicItem extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(
                                               defaultPaddingTiny)),
                                       child: Text(
-                                        "Module ${topic.module}",
+                                        "Module ${topic.chapter.module}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .caption!
                                             .copyWith(color: Colors.white),
                                       )),
-                                  Text(topic.chapter),
+                                  Text(topic.chapter.name),
                                   const Spacer(),
                                   Row(
                                     children: [
