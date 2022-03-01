@@ -17,9 +17,9 @@ class LearnScreenResponse {
     required this.data,
   });
 
-  int status;
-  String message;
-  Data data;
+  final int status;
+  final String message;
+  final Data data;
 
   factory LearnScreenResponse.fromJson(Map<String, dynamic> json) =>
       LearnScreenResponse(
@@ -41,12 +41,11 @@ class Data {
     required this.subjects,
   });
 
-  List<TopicElement> topics;
-  List<Subject> subjects;
+  final List<Topic> topics;
+  final List<Subject> subjects;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        topics: List<TopicElement>.from(
-            json["topics"].map((x) => TopicElement.fromJson(x))),
+        topics: List<Topic>.from(json["topics"].map((x) => Topic.fromJson(x))),
         subjects: List<Subject>.from(
             json["subjects"].map((x) => Subject.fromJson(x))),
       );
@@ -60,64 +59,69 @@ class Data {
 class Subject {
   Subject({
     required this.id,
-    required this.course,
     required this.name,
     required this.semester,
+    required this.course,
   });
 
-  int id;
-  String course;
-  String name;
-  int semester;
+  final int id;
+  final String name;
+  final int semester;
+  final int course;
 
   factory Subject.fromJson(Map<String, dynamic> json) => Subject(
         id: json["id"],
-        course: json["course"],
         name: json["name"],
         semester: json["semester"],
+        course: json["course"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "course": course,
         "name": name,
         "semester": semester,
+        "course": course,
       };
 }
 
-
-
-class TopicElement {
-  TopicElement({
-    required this.presentations,
-    required this.name,
+class Topic {
+  Topic({
     required this.id,
+    required this.name,
     required this.chapter,
     required this.subject,
+    required this.teachers,
+    required this.languages,
+    required this.thumbnail,
   });
 
-  List<Presentation> presentations;
-  String name;
-  int id;
-  Chapter chapter;
-  Subject subject;
+  final int id;
+  final String name;
+  final Chapter chapter;
+  final String subject;
+  final String thumbnail;
+  final List<Teacher> teachers;
+  final List<String> languages;
 
-  factory TopicElement.fromJson(Map<String, dynamic> json) => TopicElement(
-        presentations: List<Presentation>.from(
-            json["presentations"].map((x) => Presentation.fromJson(x))),
-        name: json["name"],
+  factory Topic.fromJson(Map<String, dynamic> json) => Topic(
+        thumbnail: json["thumbnail"],
         id: json["id"],
+        name: json["name"],
         chapter: Chapter.fromJson(json["chapter"]),
-        subject: Subject.fromJson(json["subject"]),
+        subject: json["subject"],
+        teachers: List<Teacher>.from(
+            json["teachers"].map((x) => Teacher.fromJson(x))),
+        languages: List<String>.from(json["languages"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
-        "presentations":
-            List<dynamic>.from(presentations.map((x) => x.toJson())),
-        "name": name,
         "id": id,
+        "name": name,
         "chapter": chapter.toJson(),
-        "subject": subject.toJson(),
+        "subject": subject,
+        "thumbnail": thumbnail,
+        "teachers": List<dynamic>.from(teachers.map((x) => x.toJson())),
+        "languages": List<dynamic>.from(languages.map((x) => x)),
       };
 }
 
@@ -129,10 +133,10 @@ class Chapter {
     required this.subject,
   });
 
-  int id;
-  String name;
-  int module;
-  int subject;
+  final int id;
+  final String name;
+  final int module;
+  final int subject;
 
   factory Chapter.fromJson(Map<String, dynamic> json) => Chapter(
         id: json["id"],
@@ -149,90 +153,6 @@ class Chapter {
       };
 }
 
-class Presentation {
-  Presentation({
-    required this.teacher,
-    required this.topic,
-    required this.id,
-    required this.audios,
-    required this.slides,
-  });
-
-  Teacher teacher;
-  PresentationTopic topic;
-  int id;
-  List<Audio> audios;
-  List<Slide> slides;
-
-  factory Presentation.fromJson(Map<String, dynamic> json) => Presentation(
-        teacher: Teacher.fromJson(json["teacher"]),
-        topic: PresentationTopic.fromJson(json["topic"]),
-        id: json["id"],
-        audios: List<Audio>.from(json["audios"].map((x) => Audio.fromJson(x))),
-        slides: List<Slide>.from(json["slides"].map((x) => Slide.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "teacher": teacher.toJson(),
-        "topic": topic.toJson(),
-        "id": id,
-        "audios": List<dynamic>.from(audios.map((x) => x.toJson())),
-        "slides": List<dynamic>.from(slides.map((x) => x.toJson())),
-      };
-}
-
-class Audio {
-  Audio({
-    required this.id,
-    required this.language,
-    required this.audio,
-    required this.presentation,
-  });
-
-  int id;
-  int language;
-  String audio;
-  int presentation;
-
-  factory Audio.fromJson(Map<String, dynamic> json) => Audio(
-        id: json["id"],
-        language: json["language"],
-        audio: json["audio"],
-        presentation: json["presentation"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "language": language,
-        "audio": audio,
-        "presentation": presentation,
-      };
-}
-
-class Slide {
-  Slide({
-    required this.id,
-    required this.slide,
-    required this.displayOrder,
-  });
-
-  int id;
-  String slide;
-  int displayOrder;
-
-  factory Slide.fromJson(Map<String, dynamic> json) => Slide(
-        id: json["id"],
-        slide: json["slide"],
-        displayOrder: json["display_order"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "slide": slide,
-        "display_order": displayOrder,
-      };
-}
-
 class Teacher {
   Teacher({
     required this.id,
@@ -240,9 +160,9 @@ class Teacher {
     required this.profile,
   });
 
-  int id;
-  String name;
-  String profile;
+  final int id;
+  final String name;
+  final String profile;
 
   factory Teacher.fromJson(Map<String, dynamic> json) => Teacher(
         id: json["id"],
@@ -256,29 +176,3 @@ class Teacher {
         "profile": profile,
       };
 }
-
-class PresentationTopic {
-  PresentationTopic({
-    required this.id,
-    required this.name,
-    required this.chapter,
-  });
-
-  int id;
-  String name;
-  int chapter;
-
-  factory PresentationTopic.fromJson(Map<String, dynamic> json) =>
-      PresentationTopic(
-        id: json["id"],
-        name: json["name"],
-        chapter: json["chapter"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "chapter": chapter,
-      };
-}
-
