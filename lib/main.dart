@@ -1,30 +1,37 @@
+import 'package:basic_template/basic_template.dart';
+import 'package:folldy_student/firebase_options.dart';
+
+import 'utils/setup_app.dart';
 import 'package:flutter/material.dart';
-import 'package:folldy_student/di/di.dart';
-import 'package:folldy_student/presentation/app_route.dart';
-import 'package:folldy_student/presentation/theme/theme.dart';
-import 'package:get/get.dart';
+import 'presentation/route.dart';
+import 'presentation/theme.dart';
 
-import 'presentation/screens/home/home.dart';
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   setupApp();
   runApp(const MyApp());
 }
 
-void setupApp() {
-  DependencyInjection.inject();
-}
-
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     AppTheme.setSystemOverlay();
+
     return GetMaterialApp(
-      title: 'Folldy Student',
+      debugShowCheckedModeBanner: false,
+      title: "folldy student",
       theme: AppTheme.theme,
-      routes: AppRoute.routes,
-      home: const Home(),
+      onGenerateRoute: AppRoute.onGenerateRoute,
+      onGenerateInitialRoutes: AppRoute.onGenerateInitialRoute,
+      initialRoute: AppRoute.initial,
+      // routes: AppRoute.routes,
     );
   }
 }
