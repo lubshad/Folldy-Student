@@ -8,7 +8,6 @@ import 'package:folldy_student/presentation/screens/profile_screen/profile_scree
 import 'package:folldy_student/presentation/screens/readmode_screen/readmode_screen.dart';
 import 'package:folldy_student/presentation/screens/recording_screen/recording_screen.dart';
 import 'package:folldy_student/presentation/screens/recordings/recordings.dart';
-import 'package:folldy_student/presentation/screens/register_screen/register_screen.dart';
 import 'package:folldy_student/presentation/screens/subject_details/subject_details.dart';
 import 'package:folldy_utils/presentation/elements/read_mode_element.dart';
 
