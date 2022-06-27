@@ -1,9 +1,22 @@
+import 'package:flutter/foundation.dart';
+
 class ApiConstants {
   ApiConstants._();
+  static String get domainUrl => kDebugMode
+      ? kIsWeb
+          ? "http://localhost"
+          // : "http://192.168.29.8"
+          : "http://172.20.10.3"
+      : "http://143.244.138.169";
 
-  static const String baseUrl = domainUrl + slugUrl;
-  static const String domainUrl = "http://172.20.10.4:8000";
-  // static const String domainUrl = "http://64.227.131.205";
+  static String get baseUrl =>
+      kDebugMode ? "$domainUrl:8000$slugUrl" : domainUrl + slugUrl;
+  
+  static String domainMediaUrl = kDebugMode ? "$domainUrl:8000" : domainUrl;
   static const String slugUrl = "/folldy_student/api/";
-  static const String learnScreen = "home";
+  static const String uploadAudio = "upload_audio";
+}
+
+getImageUrl(String url) {
+  return ApiConstants.domainUrl + url;
 }
