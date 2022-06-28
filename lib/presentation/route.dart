@@ -8,6 +8,7 @@ import 'package:folldy_student/presentation/screens/profile_screen/profile_scree
 import 'package:folldy_student/presentation/screens/readmode_screen/readmode_screen.dart';
 import 'package:folldy_student/presentation/screens/recording_screen/recording_screen.dart';
 import 'package:folldy_student/presentation/screens/recordings/recordings.dart';
+import 'package:folldy_student/presentation/screens/register_screen/register_screen.dart';
 import 'package:folldy_student/presentation/screens/subject_details/subject_details.dart';
 import 'package:folldy_utils/presentation/elements/read_mode_element.dart';
 
@@ -24,6 +25,7 @@ class AppRoute {
   static const String recordingListing = "/recordingListing";
   static const String profileScreen = "/profileScreen";
   static const String readmodeScreen = "/readmodeScreen";
+  static const String registerScreen = "/registerScreen";
 
   // onGenerateRoute
   static Route onGenerateRoute(RouteSettings settings) {
@@ -61,8 +63,13 @@ class AppRoute {
             builder: ((context) => ReadmodeScreen(
                   readmodeElements: arguments as List<ReadModeElement>,
                 )));
+      case registerScreen:
+        return MaterialPageRoute(
+            builder: ((context) => RegisterScreen(
+                  phone: arguments,
+                )));
       default:
-        return MaterialPageRoute(builder: (context) => Container());
+        return MaterialPageRoute(builder: (context) => const Scaffold());
     }
   }
 

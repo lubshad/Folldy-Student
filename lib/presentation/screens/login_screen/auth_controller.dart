@@ -1,6 +1,7 @@
 import 'package:basic_template/basic_template.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:folldy_student/presentation/route.dart';
 import 'package:folldy_student/utils/extensions.dart';
 import 'package:folldy_utils/data/models/faculty_list_response.dart';
 import 'package:folldy_utils/domain/usecase/check_registered_user.dart';
@@ -70,6 +71,7 @@ class AuthController extends ChangeNotifier {
       if (r["status"] == 1) {
         sendOtp();
       } else if (r["status"] == 0) {
+        Get.toNamed(AppRoute.registerScreen, arguments: phoneController.text);
         showErrorMessage(r["message"]);
       }
     });
