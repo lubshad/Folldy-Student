@@ -3,27 +3,26 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:folldy_student/presentation/route.dart';
 import 'package:folldy_student/utils/extensions.dart';
-import 'package:folldy_utils/data/models/faculty_list_response.dart';
+import 'package:folldy_utils/data/models/student.dart';
 import 'package:folldy_utils/domain/usecase/check_registered_user.dart';
-import 'package:folldy_utils/domain/usecase/institution_faculty_login.dart';
+import 'package:folldy_utils/domain/usecase/student_login.dart';
 
 import '../../../utils/snackbar_utils.dart';
 
 class AuthController extends ChangeNotifier {
-  InstitutionFacultyLogin institutionFacultyLogin =
-      InstitutionFacultyLogin(Get.find());
+  StudentLogin studentLogin = StudentLogin(Get.find());
 
   CheckRegisteredUser checkRegisteredUser = CheckRegisteredUser(Get.find());
 
-  Faculty? get faculty => _faculty;
-  Faculty? _faculty;
+  Student? get student => _student;
+  Student? _student;
   AuthController() {
     firebaseAuthInstance.userChanges().listen((newUser) {
       // user = newUser;
       if (newUser != null) {
         login(newUser.phoneNumber!.substring(3), newUser.uid);
       } else {
-        _faculty = null;
+        _student = null;
         notifyListeners();
       }
     });
@@ -56,8 +55,8 @@ class AuthController extends ChangeNotifier {
   String? verificationID;
 
   void login(String phoneNumber, uuid) async {
-    final response = await institutionFacultyLogin(
-        InstitutionFacultyLoginParams(phone: phoneNumber, uuid: uuid));
+    final response =
+        await studentLogin(StudentLoginParams(phone: phoneNumber, uuid: uuid));
     response.fold((l) {
       l.handleError();
     }, (r) => validateLogin(r));
@@ -73,6 +72,8 @@ class AuthController extends ChangeNotifier {
       } else if (r["status"] == 0) {
         Get.toNamed(AppRoute.registerScreen, arguments: phoneController.text);
         showErrorMessage(r["message"]);
+      } else {
+        showErrorMessage(r["message"]);
       }
     });
   }
@@ -82,8 +83,9 @@ class AuthController extends ChangeNotifier {
       showErrorMessage(r["message"]);
       await firebaseAuthInstance.signOut();
     } else {
-      Faculty faculty = Faculty.fromJson(r["data"]);
-      Get.find<AuthController>().loginFaculty(faculty);
+      Student student = Student.fromJson(r["data"]);
+      
+      // Get.find<AuthController>().loginStudent(student);
     }
   }
 
@@ -129,8 +131,8 @@ class AuthController extends ChangeNotifier {
     otpController.clear();
   }
 
-  void loginFaculty(Faculty faculty) {
-    _faculty = faculty;
+  void loginStudent(Student student) {
+    _student = student;
     makeButtonNotLoading();
   }
 

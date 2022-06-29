@@ -39,7 +39,7 @@ class RecordingsController extends ChangeNotifier {
   getData() async {
     final response = await getAllRecordedPresentations(
         GetRecordedPresentationsArguments(
-            facultyId: Get.find<AuthController>().faculty!.id.toString()));
+            facultyId: Get.find<AuthController>().student!.id.toString()));
     response.fold((l) => l.handleError(), (r) => handleResponse(r));
     makeNotLoading();
   }

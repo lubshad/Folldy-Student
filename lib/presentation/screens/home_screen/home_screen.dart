@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:folldy_student/presentation/screens/batch_listing/batch_listing.dart';
 
 import '../dashboard_screen/dashboard_screen.dart';
 
@@ -17,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: 1, vsync: this);
     super.initState();
   }
 
@@ -30,9 +29,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           DashboardScreen(
             navigateToBatches: () => tabController.animateTo(1),
           ),
-          BatchListing(
-            navigateToDashboard: () => tabController.animateTo(0),
-          ),
+          // BatchListing(
+          //   navigateToDashboard: () => tabController.animateTo(0),
+          // ),
         ]),
       ),
     );

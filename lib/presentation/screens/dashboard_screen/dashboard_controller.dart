@@ -30,7 +30,7 @@ class DashboardController extends ChangeNotifier {
 
   getData() async {
     final response = await getFacultyDashboard(GetFacultyDashboardParams(
-        facultyId: Get.find<AuthController>().faculty!.id));
+        facultyId: Get.find<AuthController>().student!.id));
     response.fold((l) => l.handleError(), (r) => handleResponse(r));
     makeNotLoading();
   }

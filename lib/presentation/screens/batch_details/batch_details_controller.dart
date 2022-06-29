@@ -26,7 +26,7 @@ class BatchDetailsController extends ChangeNotifier {
   bool get isAdmin =>
       availableTeachers
           .singleWhere((element) => element["isAdmin"] == true)["id"] ==
-      authController.faculty?.id;
+      authController.student?.id;
 
   // List<Map<String, dynamic>> get semesters {
   //   return batchDetails == null ? [] : batchDetails!["data"]["semesters"];
@@ -52,7 +52,7 @@ class BatchDetailsController extends ChangeNotifier {
 
   getData() async {
     final response = await getBatchDetails(GetBatchDetailsParams(
-        batchId: batch!["id"], facultyId: authController.faculty!.id));
+        batchId: batch!["id"], facultyId: authController.student!.id));
     response.fold((l) => appError = l, (r) => handleResponse(r));
     makeNotLoading();
   }
@@ -82,7 +82,7 @@ class BatchDetailsController extends ChangeNotifier {
   void addSubjectToDashboard(subject) async {
     final response = await assignSubjectToFaculty(AssignSubjectTOFacultyParams(
         batchId: batch!["id"],
-        facultyId: authController.faculty!.id,
+        facultyId: authController.student!.id,
         subjectId: subject["id"]));
     response.fold((l) => l.handleError(), (r) {
       if (r["status"] == 0) {

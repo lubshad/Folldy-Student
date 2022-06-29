@@ -48,10 +48,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1024919465405-mqrd2jriiq038kf1982qf58cbava8p04.apps.googleusercontent.com",
+              "client_id": "1024919465405-jtlu9dml2uu61gs33j4360utuknd3f27.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.folldyTeacher"
+                "bundle_id": "com.example.folldyStudent"
               }
             }
           ]
@@ -66,6 +66,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1024919465405-hk2tls08537n904k4jgbvhbst4nm8vm6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.folldy_student",
+            "certificate_hash": "db90777f5664e8c460d9fe132d16e6918e620a5f"
+          }
+        },
         {
           "client_id": "1024919465405-qopbqssgfrqks5guitb02a7n5f7on46a.apps.googleusercontent.com",
           "client_type": 3
@@ -84,10 +92,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1024919465405-mqrd2jriiq038kf1982qf58cbava8p04.apps.googleusercontent.com",
+              "client_id": "1024919465405-jtlu9dml2uu61gs33j4360utuknd3f27.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.folldyTeacher"
+                "bundle_id": "com.example.folldyStudent"
               }
             }
           ]
@@ -102,6 +110,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1024919465405-0umm5s3o8foqlsn6875185421dgk5v88.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.folldy_teacher",
+            "certificate_hash": "19941170460496b7c4b949e10ab9706cd69453a3"
+          }
+        },
         {
           "client_id": "1024919465405-smfe8pgkt03vptgtrssns2kctbokce97.apps.googleusercontent.com",
           "client_type": 1,
@@ -128,10 +144,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1024919465405-mqrd2jriiq038kf1982qf58cbava8p04.apps.googleusercontent.com",
+              "client_id": "1024919465405-jtlu9dml2uu61gs33j4360utuknd3f27.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.folldyTeacher"
+                "bundle_id": "com.example.folldyStudent"
               }
             }
           ]
@@ -172,10 +188,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1024919465405-mqrd2jriiq038kf1982qf58cbava8p04.apps.googleusercontent.com",
+              "client_id": "1024919465405-jtlu9dml2uu61gs33j4360utuknd3f27.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.folldyTeacher"
+                "bundle_id": "com.example.folldyStudent"
               }
             }
           ]
@@ -224,10 +240,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1024919465405-mqrd2jriiq038kf1982qf58cbava8p04.apps.googleusercontent.com",
+              "client_id": "1024919465405-jtlu9dml2uu61gs33j4360utuknd3f27.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.folldyTeacher"
+                "bundle_id": "com.example.folldyStudent"
               }
             }
           ]
@@ -268,10 +284,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1024919465405-mqrd2jriiq038kf1982qf58cbava8p04.apps.googleusercontent.com",
+              "client_id": "1024919465405-jtlu9dml2uu61gs33j4360utuknd3f27.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.folldyTeacher"
+                "bundle_id": "com.example.folldyStudent"
               }
             }
           ]

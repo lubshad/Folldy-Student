@@ -29,7 +29,7 @@ class DependencyInjection {
     Get.lazyPut<DataRepository>(() => DataRepositoryImplementation(Get.find()));
     Get.lazyPut(() => AuthController());
     Get.lazyPut(() => DashboardController());
-    Get.lazyPut(() => BatchListingController());
+    // Get.lazyPut(() => BatchListingController());
     Get.lazyPut(() => SubjectDetailsController());
     Get.lazyPut(() => instance);
   }

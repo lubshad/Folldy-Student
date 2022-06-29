@@ -5,8 +5,8 @@ class ApiConstants {
   static String get domainUrl => kDebugMode
       ? kIsWeb
           ? "http://localhost"
-          // : "http://192.168.0.103"
-      : "http://172.20.10.3"
+          : "http://192.168.29.8"
+      // : "http://172.20.10.3"
       : "http://143.244.138.169";
 
   static String get baseUrl =>

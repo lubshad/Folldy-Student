@@ -16,7 +16,7 @@ class AuthWrapper extends StatelessWidget {
     AuthController authController = Get.find();
     return AnimatedBuilder(
         animation: authController,
-        builder: (context, child) => authController.faculty == null
+        builder: (context, child) => authController.student == null
             ? const LoginScreen()
             : const HomeScreen());
   }

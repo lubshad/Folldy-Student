@@ -106,7 +106,7 @@ class RecordingController extends ChangeNotifier
     }
     Map<String, dynamic> data = {
       "presentation_id": presentationScreenArguments.presentationId,
-      "faculty": Get.find<AuthController>().faculty!.id,
+      "faculty": Get.find<AuthController>().student!.id,
       "timeLine": json.encode(pageNavigationTimeLine),
       "localPath": outputPath
     };

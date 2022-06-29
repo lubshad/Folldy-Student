@@ -1,7 +1,7 @@
 import 'package:basic_template/basic_template.dart';
 import 'package:flutter/material.dart';
-import 'package:folldy_student/presentation/screens/add_edit_batch/add_edit_batch.dart';
 import 'package:folldy_student/presentation/screens/batch_details/batch_details.dart';
+import 'package:folldy_student/presentation/screens/home_screen/home_screen.dart';
 import 'package:folldy_student/presentation/screens/login_screen/login_screen.dart';
 import 'package:folldy_student/presentation/screens/navigation_screen/navigation_screen.dart';
 import 'package:folldy_student/presentation/screens/profile_screen/profile_screen.dart';
@@ -34,10 +34,10 @@ class AppRoute {
     switch (routeName) {
       case initial:
         return MaterialPageRoute(builder: (context) => const AuthWrapper());
-      case addEditBatch:
-        return MaterialPageRoute(
-            builder: (context) =>
-                AddEditBatchScreen(refreshBatches: arguments as VoidCallback));
+      // case addEditBatch:
+      //   return MaterialPageRoute(
+      //       builder: (context) =>
+      //           AddEditBatchScreen(refreshBatches: arguments as VoidCallback));
       case batchDetails:
         return MaterialPageRoute(
             builder: ((context) => BatchDetailsScreen(
@@ -76,7 +76,7 @@ class AppRoute {
   static List<Route> onGenerateInitialRoute(String initialRoute) {
     return [
       MaterialPageRoute(
-        builder: (context) => const AuthWrapper(),
+        builder: (context) => const HomeScreen(),
       ),
     ];
   }

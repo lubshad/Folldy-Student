@@ -46,22 +46,22 @@ class DashboardScreen extends StatelessWidget {
                 onPressed: () {}, icon: const Icon(CupertinoIcons.search))
           ],
         ),
-        actions: [
-          TextButton(
-            onPressed: navigateToBatches,
-            child: Row(children: const [
-              Text("Batches", style: TextStyle(color: jumpoGrey, fontSize: 18)),
-              Padding(
-                padding: EdgeInsets.only(top: 3),
-                child: Icon(
-                  CupertinoIcons.chevron_forward,
-                  color: Colors.red,
-                  size: defaultPadding,
-                ),
-              )
-            ]),
-          )
-        ],
+        // actions: [
+        //   TextButton(
+        //     onPressed: navigateToBatches,
+        //     child: Row(children: const [
+        //       Text("Batches", style: TextStyle(color: jumpoGrey, fontSize: 18)),
+        //       Padding(
+        //         padding: EdgeInsets.only(top: 3),
+        //         child: Icon(
+        //           CupertinoIcons.chevron_forward,
+        //           color: Colors.red,
+        //           size: defaultPadding,
+        //         ),
+        //       )
+        //     ]),
+        //   )
+        // ],
       ),
       body: AnimatedBuilder(
           animation: dashboardController,
