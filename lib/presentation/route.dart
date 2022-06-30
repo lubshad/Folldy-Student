@@ -38,8 +38,8 @@ class AppRoute {
         return MaterialPageRoute(builder: (context) => const AuthWrapper());
       case otpValidationScreen:
         return MaterialPageRoute(
-            builder: (context) =>
-                OtpValidationScreen(otPvalidationParams: arguments as OTPvalidationParams));
+            builder: (context) => OtpValidationScreen(
+                otPvalidationParams: arguments as OTPvalidationParams));
       case batchDetails:
         return MaterialPageRoute(
             builder: ((context) => BatchDetailsScreen(
@@ -65,6 +65,7 @@ class AppRoute {
             builder: ((context) => ReadmodeScreen(
                   readmodeElements: arguments as List<ReadModeElement>,
                 )));
+      
       case registerScreen:
         return MaterialPageRoute(
             builder: ((context) => RegisterScreen(
