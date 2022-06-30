@@ -5,7 +5,7 @@ import 'package:folldy_student/utils/snackbar_utils.dart';
 import 'package:folldy_utils/domain/usecase/delete_recorded_audio.dart';
 import 'package:folldy_utils/domain/usecase/get_all_recoded_presentations.dart';
 
-import '../login_screen/auth_controller.dart';
+import '../../../data/core/auth_controller.dart';
 
 class RecordingsController extends ChangeNotifier {
   GetAllRecordedPresentations getAllRecordedPresentations =

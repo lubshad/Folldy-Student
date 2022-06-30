@@ -1,7 +1,6 @@
 import 'package:basic_template/basic_template.dart';
-import 'package:folldy_student/presentation/screens/batch_listing/batch_listing_controller.dart';
 import 'package:folldy_student/presentation/screens/dashboard_screen/dashboard_controller.dart';
-import 'package:folldy_student/presentation/screens/login_screen/auth_controller.dart';
+import 'package:folldy_student/data/core/auth_controller.dart';
 import 'package:folldy_student/presentation/screens/subject_details/subject_details_controller.dart';
 import 'package:folldy_utils/data/data_sources/remote_data_source.dart';
 import 'package:folldy_utils/data/repository_implemenations/data_repository_implementation.dart';

@@ -1,9 +1,8 @@
 import 'package:basic_template/basic_template.dart';
 import 'package:flutter/material.dart';
 import 'package:folldy_student/presentation/screens/batch_details/batch_details.dart';
-import 'package:folldy_student/presentation/screens/home_screen/home_screen.dart';
-import 'package:folldy_student/presentation/screens/login_screen/login_screen.dart';
 import 'package:folldy_student/presentation/screens/navigation_screen/navigation_screen.dart';
+import 'package:folldy_student/presentation/screens/otp_validation_screen/otp_validation_screen.dart';
 import 'package:folldy_student/presentation/screens/profile_screen/profile_screen.dart';
 import 'package:folldy_student/presentation/screens/readmode_screen/readmode_screen.dart';
 import 'package:folldy_student/presentation/screens/recording_screen/recording_screen.dart';
@@ -11,6 +10,8 @@ import 'package:folldy_student/presentation/screens/recordings/recordings.dart';
 import 'package:folldy_student/presentation/screens/register_screen/register_screen.dart';
 import 'package:folldy_student/presentation/screens/subject_details/subject_details.dart';
 import 'package:folldy_utils/presentation/elements/read_mode_element.dart';
+
+import '../data/core/auth_wrapper.dart';
 
 class AppRoute {
   // Routes
@@ -26,6 +27,7 @@ class AppRoute {
   static const String profileScreen = "/profileScreen";
   static const String readmodeScreen = "/readmodeScreen";
   static const String registerScreen = "/registerScreen";
+  static const String otpValidationScreen = "/otpValidationScreen";
 
   // onGenerateRoute
   static Route onGenerateRoute(RouteSettings settings) {
@@ -34,10 +36,10 @@ class AppRoute {
     switch (routeName) {
       case initial:
         return MaterialPageRoute(builder: (context) => const AuthWrapper());
-      // case addEditBatch:
-      //   return MaterialPageRoute(
-      //       builder: (context) =>
-      //           AddEditBatchScreen(refreshBatches: arguments as VoidCallback));
+      case otpValidationScreen:
+        return MaterialPageRoute(
+            builder: (context) =>
+                OtpValidationScreen(otPvalidationParams: arguments as OTPvalidationParams));
       case batchDetails:
         return MaterialPageRoute(
             builder: ((context) => BatchDetailsScreen(
@@ -76,7 +78,7 @@ class AppRoute {
   static List<Route> onGenerateInitialRoute(String initialRoute) {
     return [
       MaterialPageRoute(
-        builder: (context) => const HomeScreen(),
+        builder: (context) => const AuthWrapper(),
       ),
     ];
   }

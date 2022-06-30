@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../dashboard_screen/dashboard_screen.dart';
+import '../updates_listing_screen/updates_listing_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    tabController = TabController(length: 1, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
@@ -27,11 +28,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       child: Scaffold(
         body: TabBarView(controller: tabController, children: [
           DashboardScreen(
-            navigateToBatches: () => tabController.animateTo(1),
+            navigateToUpdates: () => tabController.animateTo(1),
           ),
-          // BatchListing(
-          //   navigateToDashboard: () => tabController.animateTo(0),
-          // ),
+           UpdatesListing(navigateToDashboard: () => tabController.animateTo(0),)
         ]),
       ),
     );

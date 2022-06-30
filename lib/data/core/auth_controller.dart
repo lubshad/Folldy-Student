@@ -1,13 +1,12 @@
 import 'package:basic_template/basic_template.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:folldy_student/presentation/route.dart';
 import 'package:folldy_student/utils/extensions.dart';
 import 'package:folldy_utils/data/models/student.dart';
 import 'package:folldy_utils/domain/usecase/check_registered_user.dart';
 import 'package:folldy_utils/domain/usecase/student_login.dart';
 
-import '../../../utils/snackbar_utils.dart';
+import '../../utils/snackbar_utils.dart';
 
 class AuthController extends ChangeNotifier {
   StudentLogin studentLogin = StudentLogin(Get.find());
@@ -62,21 +61,7 @@ class AuthController extends ChangeNotifier {
     }, (r) => validateLogin(r));
   }
 
-  checkPhoneRegistered() async {
-    if (!validate()) return;
-    final response = await checkRegisteredUser(
-        CheckRegisteredUserParams(phone: phoneController.text));
-    response.fold((l) => l.handleError(), (r) {
-      if (r["status"] == 1) {
-        sendOtp();
-      } else if (r["status"] == 0) {
-        Get.toNamed(AppRoute.registerScreen, arguments: phoneController.text);
-        showErrorMessage(r["message"]);
-      } else {
-        showErrorMessage(r["message"]);
-      }
-    });
-  }
+  
 
   validateLogin(Map<String, dynamic> r) async {
     if (r["status"] == 0) {
@@ -84,52 +69,13 @@ class AuthController extends ChangeNotifier {
       await firebaseAuthInstance.signOut();
     } else {
       Student student = Student.fromJson(r["data"]);
-      
-      // Get.find<AuthController>().loginStudent(student);
+      loginStudent(student);
     }
   }
 
-  sendOtp() async {
-    makeButtonLoading();
-    await firebaseAuthInstance.verifyPhoneNumber(
-      phoneNumber: "+91${phoneController.text}",
-      verificationCompleted: (PhoneAuthCredential credential) {
-        makeButtonNotLoading();
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        if (e.code == 'invalid-phone-number') {
-          logger.info('The provided phone number is not valid.');
-        }
-        makeButtonNotLoading();
-      },
-      timeout: const Duration(seconds: 60),
-      codeSent: (String verificationId, int? resendToken) {
-        verificationID = verificationId;
-        logger.info(verificationId);
-        makeButtonNotLoading();
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-    phoneController.clear();
-  }
+  
 
-  verifyOtp() async {
-    makeButtonLoading();
-    logger.info(verificationID);
-    logger.info(otpController.text);
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationID!, smsCode: otpController.text);
-    try {
-      await firebaseAuthInstance.signInWithCredential(credential);
-      // makeButtonNotLoading();
-    } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(Get.context!)
-          .showSnackBar(SnackBar(content: Text(e.message.toString())));
-      makeButtonNotLoading();
-    }
-    verificationID = null;
-    otpController.clear();
-  }
+  
 
   void loginStudent(Student student) {
     _student = student;

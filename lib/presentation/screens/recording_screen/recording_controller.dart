@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:folldy_student/data/core/api_constants.dart';
 import 'package:folldy_student/presentation/screens/recording_screen/audio_player_mixin.dart';
 import 'package:folldy_student/presentation/screens/recording_screen/page_navigation_mixin.dart';
-import 'package:folldy_student/presentation/screens/recording_screen/recording_mixin.dart';
 import 'package:folldy_student/presentation/screens/recording_screen/recording_screen.dart';
 import 'package:folldy_student/utils/extensions.dart';
 import 'package:folldy_utils/domain/usecase/get_all_pages.dart';
@@ -14,11 +13,11 @@ import 'package:folldy_utils/domain/usecase/upload_presentation_audio.dart';
 import 'package:folldy_utils/presentation/elements/element_type.dart';
 import 'package:folldy_utils/presentation/elements/read_mode_element.dart';
 
-import '../login_screen/auth_controller.dart';
+import '../../../data/core/auth_controller.dart';
 
 class RecordingController extends ChangeNotifier
     with
-        RecordingMixin,
+        // RecordingMixin,
         PageNavigationMixin,
         AudioPlayerMixin,
         WidgetsBindingObserver {
@@ -32,7 +31,7 @@ class RecordingController extends ChangeNotifier
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
       audioPlayer.playing ? audioPlayer.pause() : null;
-      pauseRecording();
+      // pauseRecording();
     }
   }
 
@@ -90,11 +89,11 @@ class RecordingController extends ChangeNotifier
     }, (r) => handleResponse(r));
   }
 
-  void stopRecordingAndShowPlaybutton() async {
-    String? outputPath = await stopRecording();
-    audioPlayer.setFilePath(outputPath!);
-    uploadAudio(outputPath: outputPath);
-  }
+  // void stopRecordingAndShowPlaybutton() async {
+  //   String? outputPath = await stopRecording();
+  //   audioPlayer.setFilePath(outputPath!);
+  //   uploadAudio(outputPath: outputPath);
+  // }
 
   uploadAudio({required String outputPath, int? id}) async {
     showPlayer = true;
@@ -200,18 +199,18 @@ class RecordingController extends ChangeNotifier
 
   void recordAction(int value) {
     recordHistory(value);
-    recordPageNavigation(value);
+    // recordPageNavigation(value);
   }
 
-  recordPageNavigation(int value) {
-    if (stopWath?.elapsed == Duration.zero || showPlayer) return;
-    Map<String, dynamic> page = pages[value];
-    String pageUuid = page["element_uuid"];
-    pageNavigationTimeLine.insert(0, {
-      "time": stopWath?.elapsed.inMilliseconds ?? 0,
-      "page_uuid": pageUuid,
-    });
-  }
+  // recordPageNavigation(int value) {
+  //   if (stopWath?.elapsed == Duration.zero || showPlayer) return;
+  //   Map<String, dynamic> page = pages[value];
+  //   String pageUuid = page["element_uuid"];
+  //   pageNavigationTimeLine.insert(0, {
+  //     "time": stopWath?.elapsed.inMilliseconds ?? 0,
+  //     "page_uuid": pageUuid,
+  //   });
+  // }
 
   Future<void> navigateWithDuration(Duration elapsedDuration) async {
     Map<String, dynamic>? timeLineItem = pageNavigationTimeLine
@@ -233,7 +232,7 @@ class RecordingController extends ChangeNotifier
     // if (audioPlayer.playing) await audioPlayer.pause();
     await audioPlayer.dispose();
     // await pauseRecording();
-    await record.dispose();
+    // await record.dispose();
     return true;
   }
 }

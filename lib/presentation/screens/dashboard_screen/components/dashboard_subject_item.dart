@@ -81,7 +81,7 @@ class DashbordSubjectItem extends StatelessWidget {
                 ),
               ),
               Builder(builder: (context) {
-                if (history.length < 2) {
+                // if (history.length < 2) {
                   return Row(
                     children: [
                       Expanded(
@@ -93,13 +93,13 @@ class DashbordSubjectItem extends StatelessWidget {
                                     bottomLeft:
                                         Radius.circular(defaultPaddingSmall)),
                                 child: LargeThumbnailItem(
-                                    presentation: upcomming[0]))),
+                                    presentation: history[0]))),
                       ),
                       Expanded(
                         flex: 1,
                         child: Column(
                           children: upcomming
-                              .skip(1)
+                              .take(2)
                               .map((presentation) =>
                                   SmallThumbnail(presentation: presentation))
                               .toList(),
@@ -107,39 +107,39 @@ class DashbordSubjectItem extends StatelessWidget {
                       ),
                     ],
                   );
-                }
-                return Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        children: history
-                            .skip(1)
-                            .map(
-                              (history) => AspectRatio(
-                                  aspectRatio: portraitSize.aspectRatio,
-                                  child: SmallThumbnail(
-                                    presentation: history,
-                                  )),
-                            )
-                            .toList(),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: AspectRatio(
-                          aspectRatio: portraitSize.aspectRatio,
-                          child: ClipRRect(
-                              borderRadius: const BorderRadius.only(
-                                  bottomRight:
-                                      Radius.circular(defaultPaddingSmall)),
-                              child: LargeThumbnailItem(
-                                  presentation: upcomming.isEmpty
-                                      ? history.last
-                                      : upcomming[0]))),
-                    ),
-                  ],
-                );
+                // }
+                // return Row(
+                //   children: [
+                //     Expanded(
+                //       flex: 1,
+                //       child: Column(
+                //         children: history
+                //             .skip(1)
+                //             .map(
+                //               (history) => AspectRatio(
+                //                   aspectRatio: portraitSize.aspectRatio,
+                //                   child: SmallThumbnail(
+                //                     presentation: history,
+                //                   )),
+                //             )
+                //             .toList(),
+                //       ),
+                //     ),
+                //     Expanded(
+                //       flex: 2,
+                //       child: AspectRatio(
+                //           aspectRatio: portraitSize.aspectRatio,
+                //           child: ClipRRect(
+                //               borderRadius: const BorderRadius.only(
+                //                   bottomRight:
+                //                       Radius.circular(defaultPaddingSmall)),
+                //               child: LargeThumbnailItem(
+                //                   presentation: upcomming.isEmpty
+                //                       ? history.last
+                //                       : upcomming[0]))),
+                //     ),
+                //   ],
+                // );
               }),
               Row(
                 children: [

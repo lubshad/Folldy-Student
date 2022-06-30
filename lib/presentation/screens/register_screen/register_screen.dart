@@ -25,6 +25,7 @@ class RegisterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
+                enabled: false,
                 autofillHints: const [AutofillHints.telephoneNumberDevice],
                 controller: registerController.phoneController,
                 keyboardType: TextInputType.phone,

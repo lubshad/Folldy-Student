@@ -22,7 +22,7 @@ class DashboardBody extends StatelessWidget {
             subjects: dashboardDetails["subjects"],
           ),
           defaultSpacerSmall,
-          RecentlyCreated(presentations: dashboardDetails["recently_created"]),
+          RecentlyCreated(presentations: dashboardDetails["recently_viewed"]),
           defaultSpacerSmall,
           LiveSubjects(subjects: dashboardDetails["subjects"])
         ],

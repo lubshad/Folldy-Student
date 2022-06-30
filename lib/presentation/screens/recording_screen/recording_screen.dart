@@ -3,9 +3,7 @@ import 'package:folldy_student/data/core/api_constants.dart';
 import 'package:folldy_student/presentation/screens/recording_screen/recording_controller.dart';
 import 'package:folldy_student/utils/constants.dart';
 import 'package:folldy_utils/data/models/player_state.dart';
-import 'package:folldy_utils/data/models/recording_state.dart';
 import 'package:folldy_utils/presentation/components/player_controlls.dart';
-import 'package:folldy_utils/presentation/components/recording_controllers.dart';
 import 'package:folldy_utils/presentation/elements/element_utils.dart';
 
 import 'components/recording_screen_app_bar.dart';
@@ -69,30 +67,30 @@ class RecordingScreen extends StatelessWidget {
               bottom: defaultPadding,
               child: AnimatedBuilder(
                   animation: recordingController,
-                  child: StreamBuilder<RecordingState>(
-                      stream: recordingController.recordingStateStream,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          final recordingState = snapshot.data!;
-                          return RecordingControlls(
-                            recordingState: recordingState,
-                            pauseRecording: recordingController.pauseRecording,
-                            resumeRecording:
-                                recordingController.resumeRecording,
-                            startRecording: recordingController.startRecording,
-                            stopRecording: recordingController
-                                .stopRecordingAndShowPlaybutton,
-                          );
-                        } else {
-                          return Container();
-                        }
-                      }),
+                  // child: StreamBuilder<RecordingState>(
+                  //     stream: recordingController.recordingStateStream,
+                  //     builder: (context, snapshot) {
+                  //       if (snapshot.hasData) {
+                  //         final recordingState = snapshot.data!;
+                  //         return RecordingControlls(
+                  //           recordingState: recordingState,
+                  //           pauseRecording: recordingController.pauseRecording,
+                  //           resumeRecording:
+                  //               recordingController.resumeRecording,
+                  //           startRecording: recordingController.startRecording,
+                  //           stopRecording: recordingController
+                  //               .stopRecordingAndShowPlaybutton,
+                  //         );
+                  //       } else {
+                  //         return Container();
+                  //       }
+                  //     }),
                   builder: (context, child) => recordingController.isLoading
                       ? Container()
                       : recordingController.pages.isEmpty
                           ? Container()
                           : !recordingController.showPlayer
-                              ? child!
+                              ? Container()
                               : StreamBuilder<AudioPlayerState>(
                                   stream: recordingController.combinedStream,
                                   builder: (context, snapshot) {

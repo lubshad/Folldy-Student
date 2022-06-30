@@ -51,7 +51,7 @@ extension ScreenExtension on Screens {
   Widget get body {
     switch (this) {
       case Screens.dashboard:
-        return DashboardScreen(navigateToBatches: () {});
+        return DashboardScreen(navigateToUpdates: () {});
       // case Screens.batches:
       //   return BatchListing(
       //     navigateToDashboard: () {},

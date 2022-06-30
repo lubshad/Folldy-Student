@@ -8,7 +8,7 @@ import 'package:folldy_utils/domain/usecase/change_live_semester.dart';
 import 'package:folldy_utils/domain/usecase/get_batch_details.dart';
 
 import '../../../utils/snackbar_utils.dart';
-import '../login_screen/auth_controller.dart';
+import '../../../data/core/auth_controller.dart';
 import 'components/teacher_selection_bottom_sheet.dart';
 
 class BatchDetailsController extends ChangeNotifier {

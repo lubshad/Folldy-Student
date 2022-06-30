@@ -11,10 +11,10 @@ import 'components/dashboard_body.dart';
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({
     Key? key,
-    required this.navigateToBatches,
+    required this.navigateToUpdates,
   }) : super(key: key);
 
-  final VoidCallback navigateToBatches;
+  final VoidCallback navigateToUpdates;
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +46,22 @@ class DashboardScreen extends StatelessWidget {
                 onPressed: () {}, icon: const Icon(CupertinoIcons.search))
           ],
         ),
-        // actions: [
-        //   TextButton(
-        //     onPressed: navigateToBatches,
-        //     child: Row(children: const [
-        //       Text("Batches", style: TextStyle(color: jumpoGrey, fontSize: 18)),
-        //       Padding(
-        //         padding: EdgeInsets.only(top: 3),
-        //         child: Icon(
-        //           CupertinoIcons.chevron_forward,
-        //           color: Colors.red,
-        //           size: defaultPadding,
-        //         ),
-        //       )
-        //     ]),
-        //   )
-        // ],
+        actions: [
+          TextButton(
+            onPressed: navigateToUpdates,
+            child: Row(children: const [
+              Text("Updates", style: TextStyle(color: jumpoGrey, fontSize: 18)),
+              Padding(
+                padding: EdgeInsets.only(top: 3),
+                child: Icon(
+                  CupertinoIcons.chevron_forward,
+                  color: Colors.red,
+                  size: defaultPadding,
+                ),
+              )
+            ]),
+          )
+        ],
       ),
       body: AnimatedBuilder(
           animation: dashboardController,

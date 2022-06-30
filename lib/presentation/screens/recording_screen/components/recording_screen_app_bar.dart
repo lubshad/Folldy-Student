@@ -46,7 +46,7 @@ class RecordingScreenAppBar extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: defaultPaddingSmall),
                     child: AnimatedBuilder(
-                        animation: recordingController.pageController,
+                        animation: Listenable.merge([recordingController.pageController, recordingController]),
                         builder: (context, child) {
                           int totalPages = recordingController.pages.length;
                           int currentPage =

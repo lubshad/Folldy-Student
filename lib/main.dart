@@ -11,9 +11,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await GetStorage.init();
   setupApp();
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
