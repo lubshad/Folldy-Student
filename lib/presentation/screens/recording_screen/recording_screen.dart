@@ -104,6 +104,9 @@ class RecordingScreen extends StatelessWidget {
                                     recordingController.navigateWithDuration(
                                         playerState.elapsedDuration);
                                     return PlayerControlls(
+                                        popupButton: IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(Icons.more_horiz)),
                                         changePlaybackSpeed: recordingController
                                             .audioPlayer.setSpeed,
                                         skipBackward:

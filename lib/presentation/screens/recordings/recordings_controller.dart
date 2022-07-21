@@ -60,8 +60,8 @@ class RecordingsController extends ChangeNotifier {
   }
 
   void deletePresentationAudio(Map<String, dynamic> presentation) async {
-    final response = await deleteRecordedAudio(DeleteRecordedAudioParams(
-        audioId: presentation["audio"][0]["id"].toString()));
+    final response = await deleteRecordedAudio(
+        DeleteRecordedAudioParams(audioId: presentation["audio"][0]["id"]));
     response.fold((l) => l.handleError(), (r) => getData());
   }
 }

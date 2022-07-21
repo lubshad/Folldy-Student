@@ -16,6 +16,7 @@ mixin RecordingMixin {
     void onListen() {
       stopWath = Stopwatch();
       streamController?.add(RecordingState(
+        isVisible: true,
           isProcessing: false,
           isRecording: isRecording,
           isPaused: isPaused,
@@ -47,6 +48,7 @@ mixin RecordingMixin {
         stopWath?.start();
         timer = Timer.periodic(streamDuration, (value) {
           streamController?.add(RecordingState(
+            isVisible: true,
               isProcessing: false,
               isRecording: true,
               isPaused: false,
@@ -63,6 +65,7 @@ mixin RecordingMixin {
     logger.info(recordedPath);
     timer?.cancel();
     streamController?.add(RecordingState(
+      isVisible: true,
         isProcessing: true,
         isRecording: false,
         isPaused: false,
@@ -78,6 +81,7 @@ mixin RecordingMixin {
     stopWath?.stop();
     timer?.cancel();
     streamController?.add(RecordingState(
+      isVisible: true,
         isProcessing: false,
         isRecording: true,
         isPaused: true,
@@ -90,6 +94,7 @@ mixin RecordingMixin {
       stopWath?.start();
       timer = Timer.periodic(streamDuration, (timer) {
         streamController?.add(RecordingState(
+          isVisible: true,
             isProcessing: false,
             isRecording: true,
             isPaused: false,
